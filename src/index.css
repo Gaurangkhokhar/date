@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #09090F 0%, #1A1026 50%, #2D103F 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FF69B4, #9b59b6);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+
+  .glass-card {
+    @apply glass;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 105, 180, 0.3);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .glow-button {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5), 0 0 50px rgba(255, 105, 180, 0.2);
+  }
+
+  .glow-button:active {
+    transform: translateY(0);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.3), 0 0 40px rgba(255, 105, 180, 0.1);
+  }
+
+  .heart-cursor {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E❤️%3C/text%3E%3C/svg%3E") 12 12, auto;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #FF69B4, #FFD700, #FF1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #FF69B4;
+    animation: typing 3s steps(40) 1s forwards, blink 0.75s step-end infinite;
+    width: 0;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #FF69B4 }
+  }
+
+  .float-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 40;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 30;
+    animation: petalFall linear infinite;
+  }
+
+  @keyframes petalFall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(110vh) rotate(720deg) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  /* Loading spinner */
+  .heart-loader {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .heart-loader::before,
+  .heart-loader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 48px;
+    border-radius: 30px 30px 0 0;
+    background: #FF69B4;
+  }
+
+  .heart-loader::before {
+    left: 30px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart-loader::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+}
+
+@layer utilities {
+  .text-shadow-pink {
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
+
+  .bg-gradient-romantic {
+    background: linear-gradient(135deg, #09090F 0%, #1A1026 50%, #2D103F 100%);
+  }
+
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  .animate-delay-1000 {
+    animation-delay: 1s;
+  }
+}
+
